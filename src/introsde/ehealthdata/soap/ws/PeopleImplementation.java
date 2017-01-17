@@ -16,7 +16,7 @@ import introsde.ehealthdata.soap.model.Person;
  * @author alan
  */
 
-@WebService(endpointInterface="introsde.assignment.soap.ws.People", serviceName="People")
+@WebService(endpointInterface="introsde.ehealthdata.soap.ws.People", serviceName="People")
 public class PeopleImplementation implements People {
 
 	/***
