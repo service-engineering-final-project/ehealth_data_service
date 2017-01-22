@@ -6,6 +6,7 @@
 		<class>introsde.health.soap.model.Measurement</class>
 		<class>introsde.health.soap.model.MeasurementHistory</class>
 		<class>introsde.health.soap.model.Person</class>
+		<class>introsde.health.soap.model.Goal</class>
 		<properties>
 			<!-- the jdbc driver we will use to connect to the database change it 
 			depending of what database you use -->

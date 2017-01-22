@@ -5,6 +5,7 @@ import java.util.List;
 import javax.jws.WebService;
 
 import introsde.health.soap.dao.EHealthDao;
+import introsde.health.soap.model.Goal;
 import introsde.health.soap.model.Measure;
 import introsde.health.soap.model.Measurement;
 import introsde.health.soap.model.MeasurementHistory;
@@ -16,11 +17,11 @@ import introsde.health.soap.model.Person;
  * @author alan
  */
 
-@WebService(endpointInterface="introsde.ehealthdata.soap.ws.People", serviceName="People")
+@WebService(endpointInterface="introsde.health.soap.ws.People", serviceName="People")
 public class PeopleImplementation implements People {
 
 	/***
-	 * Method #1: A method that lists all the people in the database.
+	 * A method that lists all the people in the database.
 	 * @return all the people in the database
 	 */
 	@Override
@@ -33,7 +34,7 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
-	 * Method #2: A method that gives all the information of a person identified by {id}.
+	 * A method that gives all the information of a person identified by {id}.
 	 * @param id: the identifier
 	 * @return the person identified by {id}
 	 */
@@ -47,7 +48,7 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
-	 * Method #3: A method that updates the information of a person identified by {id}
+	 * A method that updates the information of a person identified by {id}
 	 * (i.e. only the person's information, not the measures of the health profile).
 	 * @param p: the person to update
 	 * @return the person updated
@@ -63,7 +64,7 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
-	 * Method #4: A method that creates a new person and returns it with its assigned id
+	 * A method that creates a new person and returns it with its assigned id
 	 * (i.e. if a health profile is included, also its measurements will be created).
 	 * @param p: the person to create
 	 * @return the person created
@@ -78,7 +79,7 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
-	 * Method #5: A method that deletes the person identified by {id} from the system.
+	 * A method that deletes the person identified by {id} from the system.
 	 * @param id: the identifier of the person to delete
 	 */
 	@Override
@@ -95,7 +96,7 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
-	 * Method #6: A method that returns the list of values (the history) of {measureType}
+	 * A method that returns the list of values (the history) of {measureType}
 	 * (e.g. weight) for a person identified by {id}.
 	 * @param id: the identifier of the person
 	 * @param measureType: the measure of interest
@@ -112,7 +113,7 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
-	 * Method #7: A method that returns the list of all the measures supported by the service.
+	 * A method that returns the list of all the measures supported by the service.
 	 * @return the list of all the measures supported by the service
 	 */
 	@Override
@@ -125,7 +126,7 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
-	 * Method #8: A method that returns the value of {measureType} (e.g. weight)
+	 * A method that returns the value of {measureType} (e.g. weight)
 	 * identified by {mid} for a person identified by {id}.
 	 * @param id: the identifier of the person
 	 * @param measureType: the measure of interest
@@ -145,7 +146,7 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
-	 * Method #9: A method that saves a new measure object {m} (e.g. weight)
+	 * A method that saves a new measure object {m} (e.g. weight)
 	 * for a person identified by {id} and archives the old value in the history.
 	 * @param id: the identifier of the person
 	 * @param m: the measurement of interest
@@ -168,7 +169,7 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
-	 * Method #10: A method that updates the measure (e.g. weight) identified
+	 * A method that updates the measure (e.g. weight) identified
 	 * with {m.mid} for a person identified by {id}.
 	 * @param id: the identifier of the person
 	 * @param m: the measurement history of interest
@@ -185,6 +186,78 @@ public class PeopleImplementation implements People {
 		MeasurementHistory.updateMeasurementHistory(mHistory);
 		
 		return Long.valueOf(mHistory.getId());
+	}
+	
+	/***
+	 * A method that lists all the goals in the database.
+	 * @return all the goals in the database
+	 */
+	@Override
+	public List<Goal> readGoalList() {
+		System.out.println("Executing readGoalList()...");
+		List<Goal> goal = Goal.getAllGoals();
+		
+		System.out.println("\tReturning the whole list of goals...");
+		return goal;
+	}
+	
+	/***
+	 * A method that gives all the information of a goal identified by {id}.
+	 * @param id: the identifier
+	 * @return the goal identified by {id}
+	 */
+	@Override
+	public Goal readGoal(Long id) {
+		System.out.println("Executing readGoal()...");
+		Goal goal = Goal.getGoalById(id.intValue());
+		
+		System.out.println("\tReturning the goal with ID " + id.toString() + "...");
+		return goal;
+	}
+	
+	/***
+	 * A method that updates the information of a goal identified by {id}.
+	 * @param g: the goal to update
+	 * @return the goal updated
+	 */
+	@Override
+	public Goal updateGoal(Goal g) {
+		System.out.println("Executing updateGoal()...");
+		g.updateGoal(g);
+		
+		System.out.println("\tReturning the goal updated (ID: " + g.getId() + ")...");
+		return g;
+	}
+	
+	/***
+	 * A method that creates a new goal and returns it with its assigned id.
+	 * @param g: the goal to create
+	 * @return the goal created
+	 */
+	@Override
+	public Goal createGoal(Goal g) {
+		System.out.println("Executing createGoal()...");
+		Goal goal = Goal.saveGoal(g);
+		
+		System.out.println("\tReturning the goal created (ID: " + goal.getId() + ")...");
+		return goal;
+	}
+	
+	/***
+	 * A method that deletes the goal identified by {id} from the system.
+	 * @param id: the identifier of the goal to delete
+	 */
+	@Override
+	public void deleteGoal(Long id) {
+		System.out.println("Executing deleteGoal()...");
+		Goal goal = Goal.getGoalById(id.intValue());
+		
+		if (goal != null) {						// check if the goal exists
+			Goal.deleteGoal(goal);				// if yes, delete it
+			System.out.println("\tDeleting the goal with ID " + goal.getId() + "...");
+		} else {								// o.w., print an error message
+			System.out.println("\tERROR! The goal with ID " + id + " doesn't exist!");
+		}
 	}
 	
 	/***

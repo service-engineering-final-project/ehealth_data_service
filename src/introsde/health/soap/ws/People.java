@@ -10,6 +10,7 @@ import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.Style;
 import javax.jws.soap.SOAPBinding.Use;
 
+import introsde.health.soap.model.Goal;
 import introsde.health.soap.model.Measure;
 import introsde.health.soap.model.Measurement;
 import introsde.health.soap.model.MeasurementHistory;
@@ -26,7 +27,7 @@ import introsde.health.soap.model.Person;
 public interface People {
 	
 	/***
-	 * Method #1: A method that lists all the people in the database.
+	 * A method that lists all the people in the database.
 	 * @return all the people in the database
 	 */
 	@WebMethod(operationName="readPersonList")
@@ -34,7 +35,7 @@ public interface People {
 	public List<Person> readPersonList();
 	
 	/***
-	 * Method #2: A method that gives all the information of a person identified by {id}.
+	 * A method that gives all the information of a person identified by {id}.
 	 * @param id: the identifier
 	 * @return the person identified by {id}
 	 */
@@ -45,7 +46,7 @@ public interface People {
 	);
 	
 	/***
-	 * Method #3: A method that updates the information of a person identified by {id}
+	 * A method that updates the information of a person identified by {id}
 	 * (i.e. only the person's information, not the measures of the health profile).
 	 * @param p: the person to update
 	 * @return the person updated
@@ -57,7 +58,7 @@ public interface People {
 	);
 	
 	/***
-	 * Method #4: A method that creates a new person and returns it with its assigned id
+	 * A method that creates a new person and returns it with its assigned id
 	 * (i.e. if a health profile is included, also its measurements will be created).
 	 * @param p: the person to create
 	 * @return the person created
@@ -69,7 +70,7 @@ public interface People {
 	);
 	
 	/***
-	 * Method #5: A method that deletes the person identified by {id} from the system.
+	 * A method that deletes the person identified by {id} from the system.
 	 * @param id: the identifier of the person to delete
 	 */
 	@WebMethod(operationName="deletePerson")
@@ -79,7 +80,7 @@ public interface People {
 	);
 	
 	/***
-	 * Method #6: A method that returns the list of values (the history) of {measureType}
+	 * A method that returns the list of values (the history) of {measureType}
 	 * (e.g. weight) for a person identified by {id}.
 	 * @param id: the identifier of the person
 	 * @param measureType: the measure of interest
@@ -93,7 +94,7 @@ public interface People {
 	);
 	
 	/***
-	 * Method #7: A method that returns the list of all the measures supported by the service.
+	 * A method that returns the list of all the measures supported by the service.
 	 * @return the list of all the measures supported by the service
 	 */
 	@WebMethod(operationName="readMeasureTypes")
@@ -101,7 +102,7 @@ public interface People {
 	public List<Measure> readMeasureTypes();
 	
 	/***
-	 * Method #8: A method that returns the value of {measureType} (e.g. weight)
+	 * A method that returns the value of {measureType} (e.g. weight)
 	 * identified by {mid} for a person identified by {id}.
 	 * @param id: the identifier of the person
 	 * @param measureType: the measure of interest
@@ -117,7 +118,7 @@ public interface People {
 	);
 	
 	/***
-	 * Method #9: A method that saves a new measure object {m} (e.g. weight)
+	 * A method that saves a new measure object {m} (e.g. weight)
 	 * for a person identified by {id} and archives the old value in the history.
 	 * @param id: the identifier of the person
 	 * @param m: the measurement of interest
@@ -131,7 +132,7 @@ public interface People {
 	);
 	
 	/***
-	 * Method #10: A method that updates the measure (e.g. weight) identified
+	 * A method that updates the measure (e.g. weight) identified
 	 * with {m.mid} for a person identified by {id}.
 	 * @param id: the identifier of the person
 	 * @param m: the measurement history of interest
@@ -142,6 +143,57 @@ public interface People {
 	public Long updatePersonMeasure(
 			@WebParam(name="id") Long id,
 			@WebParam(name="measure_type") MeasurementHistory m
+	);
+	
+	/***
+	 * A method that lists all the goals in the database.
+	 * @return all the goals in the database
+	 */
+	@WebMethod(operationName="readGoalList")
+	@WebResult(name="goal")
+	public List<Goal> readGoalList();
+	
+	/***
+	 * A method that gives all the information of a goal identified by {id}.
+	 * @param id: the identifier
+	 * @return the goal identified by {id}
+	 */
+	@WebMethod(operationName="readGoal")
+	@WebResult(name="goal")
+	public Goal readGoal(
+			@WebParam(name="id") Long id
+	);
+	
+	/***
+	 * A method that updates the information of a goal identified by {id}.
+	 * @param g: the goal to update
+	 * @return the goal updated
+	 */
+	@WebMethod(operationName="updateGoal")
+	@WebResult(name="updatedGoal")
+	public Goal updateGoal(
+			@WebParam(name="goal") Goal g
+	);
+	
+	/***
+	 * A method that creates a new goal and returns it with its assigned id.
+	 * @param g: the goal to create
+	 * @return the goal created
+	 */
+	@WebMethod(operationName="createGoal")
+	@WebResult(name="createdGoal")
+	public Goal createGoal(
+			@WebParam(name="goal") Goal g
+	);
+	
+	/***
+	 * A method that deletes the goal identified by {id} from the system.
+	 * @param id: the identifier of the goal to delete
+	 */
+	@WebMethod(operationName="deleteGoal")
+	@WebResult(name="goal")
+	public void deleteGoal(
+			@WebParam(name="id") Long id
 	);
 	
 	/***

@@ -6,6 +6,7 @@
 		<class>introsde.health.soap.model.Measurement</class>
 		<class>introsde.health.soap.model.MeasurementHistory</class>
 		<class>introsde.health.soap.model.Person</class>
+		<class>introsde.health.soap.model.Goal</class>
 		<properties>
             <!-- Scan for annotated classes and Hibernate mapping XML files -->
             <property name="hibernate.archive.autodetection" value="class, hbm"/>
