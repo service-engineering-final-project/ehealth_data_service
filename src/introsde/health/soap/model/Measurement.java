@@ -1,4 +1,4 @@
-package introsde.ehealthdata.soap.model;
+package introsde.health.soap.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -8,8 +8,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import introsde.ehealthdata.soap.dao.EHealthDao;
-import introsde.ehealthdata.soap.model.Person;
+import introsde.health.soap.dao.EHealthDao;
+import introsde.health.soap.model.Person;
 
 
 /**

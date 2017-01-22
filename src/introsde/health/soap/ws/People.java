@@ -1,4 +1,4 @@
-package introsde.ehealthdata.soap.ws;
+package introsde.health.soap.ws;
 
 import java.util.List;
 
@@ -10,10 +10,10 @@ import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.Style;
 import javax.jws.soap.SOAPBinding.Use;
 
-import introsde.ehealthdata.soap.model.Measure;
-import introsde.ehealthdata.soap.model.Measurement;
-import introsde.ehealthdata.soap.model.MeasurementHistory;
-import introsde.ehealthdata.soap.model.Person;
+import introsde.health.soap.model.Measure;
+import introsde.health.soap.model.Measurement;
+import introsde.health.soap.model.MeasurementHistory;
+import introsde.health.soap.model.Person;
 
 /**
  * The service endpoint interface.

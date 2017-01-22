@@ -1,4 +1,4 @@
-package introsde.ehealthdata.soap.model;
+package introsde.health.soap.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,9 +12,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
-import introsde.ehealthdata.soap.dao.EHealthDao;
-import introsde.ehealthdata.soap.model.Measurement;
-import introsde.ehealthdata.soap.model.MeasurementHistory;
+import introsde.health.soap.dao.EHealthDao;
+import introsde.health.soap.model.Measurement;
+import introsde.health.soap.model.MeasurementHistory;
 
 
 /**

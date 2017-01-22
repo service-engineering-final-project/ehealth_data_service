@@ -1,4 +1,4 @@
-package introsde.ehealthdata.soap.endpoint;
+package introsde.health.soap.endpoint;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -6,7 +6,7 @@ import java.net.URISyntaxException;
 
 import javax.xml.ws.Endpoint;
 
-import introsde.ehealthdata.soap.ws.PeopleImplementation;
+import introsde.health.soap.ws.PeopleImplementation;
 
 
 /**

@@ -1,4 +1,4 @@
-package introsde.ehealthdata.soap.model;
+package introsde.health.soap.model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,7 +7,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import introsde.ehealthdata.soap.dao.EHealthDao;
+import introsde.health.soap.dao.EHealthDao;
 
 
 /**

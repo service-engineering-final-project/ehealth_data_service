@@ -1,4 +1,4 @@
-package introsde.ehealthdata.soap.dao;
+package introsde.health.soap.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
