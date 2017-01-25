@@ -1,6 +1,7 @@
 package introsde.health.soap.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -29,8 +30,12 @@ import introsde.health.soap.model.Person;
 //Statically defined queries with predefined unchangeable query strings
 @NamedQueries({
 	@NamedQuery(name="Goal.findAll", query="SELECT g FROM Goal g"),
-	@NamedQuery(name="Goal.findGoal",
-		query="SELECT g FROM Goal g WHERE g.title = :title AND g.person = :person")
+	@NamedQuery(name="Goal.findAllForPerson", 
+		query="SELECT g FROM Goal g WHERE g.person = :person"),
+	@NamedQuery(name="Goal.findPersonGoalByName",
+		query="SELECT g FROM Goal g WHERE g.title = :title AND g.person = :person"),
+	@NamedQuery(name="Goal.findPersonGoalById",
+		query="SELECT g FROM Goal g WHERE g.id = :id AND g.person = :person")
 })
 
 public class Goal implements Serializable {
@@ -287,7 +292,7 @@ public class Goal implements Serializable {
 	 * @param g: a goal to update
 	 * @return g: the updated goal
 	 */
-	public Goal updateGoal(Goal g) {	
+	public Goal updateGoal(Goal g) {
 		setGoalAttributes(g);
 		
 		EntityManager em = EHealthDao.instance.createEntityManager();
@@ -315,19 +320,32 @@ public class Goal implements Serializable {
 	}
 	
 	/**
-	 * A method that allows to retrieve a goal given a title and a person.
+	 * A method that queries the database to find all the goal in it for a particular person.
 	 * @param p: the person
-	 * @param title: the title
+	 * @return list: a list of all the goals for a particular person
+	 */
+	public static List<Goal> getAllPersonGoals(Person p) {
+		EntityManager em = EHealthDao.instance.createEntityManager();
+		List<Goal> list = em.createNamedQuery("Goal.findAllForPerson", Goal.class)
+				.setParameter("person", p).getResultList();
+		EHealthDao.instance.closeConnections(em);
+		
+		return list;
+	}
+	
+	/**
+	 * A method that allows to retrieve a goal given a goal name and a person.
+	 * @param p: the person
+	 * @param gName: the goal
 	 * @return g: the goal
 	 */
-	/*
-	public static Goal getGoal(Person p, String title) {
+	public static Goal getPersonGoalByName(Person p, String gName) {
 		EntityManager em = EHealthDao.instance.createEntityManager();
 		Goal g = new Goal();
 		
 		try {
-			g = em.createNamedQuery("Goal.findGoal", Goal.class)
-					.setParameter("person", p).setParameter("title", title).getSingleResult();
+			g = em.createNamedQuery("Goal.findPersonGoalByName", Goal.class)
+					.setParameter("person", p).setParameter("title", gName).getSingleResult();
 		} catch (Exception e) {
 			return null;
 		}
@@ -336,5 +354,26 @@ public class Goal implements Serializable {
 		
 		return g;
 	}
-	*/
+	
+	/**
+	 * A method that allows to retrieve a goal given a goal identifier and a person.
+	 * @param p: the person
+	 * @param gId: the goal identifier
+	 * @return g: the goal
+	 */
+	public static Goal getPersonGoalById(Person p, int gId) {
+		EntityManager em = EHealthDao.instance.createEntityManager();
+		Goal g = new Goal();
+		
+		try {
+			g = em.createNamedQuery("Goal.findPersonGoalById", Goal.class)
+					.setParameter("person", p).setParameter("id", gId).getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+		
+		EHealthDao.instance.closeConnections(em);
+		
+		return g;
+	}
 }

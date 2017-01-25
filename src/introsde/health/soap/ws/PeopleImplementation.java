@@ -261,6 +261,55 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
+	 * A method that lists all the goals for a particular person in the database.
+	 * @param id: the identifier of the person
+	 * @return all the goals for a particular person in the database
+	 */
+	@Override
+	public List<Goal> readPersonGoalList(Long id) {
+		System.out.println("Executing readPersonGoalList()...");
+		Person person = Person.getPersonById(id.intValue());
+		List<Goal> goals = Goal.getAllPersonGoals(person);
+		
+		System.out.println("\tReturning the whole list of goals of the person with ID " + id + "...");
+		return goals;
+	}
+	
+	/***
+	 * A method that gives all the information of a goal identified by {id} for a particular person.
+	 * @param id: the identifier of the person
+	 * @param gId: the identifier of the goal
+	 * @return the goal identified by {id} for a particular person
+	 */
+	@Override
+	public Goal readPersonGoalById(Long id, Long gId) {
+		System.out.println("Executing readPersonGoalById()...");
+		Person person = Person.getPersonById(id.intValue());
+		Goal goal = Goal.getPersonGoalById(person, gId.intValue());
+		
+		System.out.println("\tReturning the goal with gID " + gId + 
+				" of the person with ID " + id + "...");
+		return goal;
+	}
+	
+	/***
+	 * A method that gives all the information of a goal identified by {title} for a particular person.
+	 * @param id: the identifier of the person
+	 * @param title: the title of the goal
+	 * @return the goal identified by {title} for a particular person
+	 */
+	@Override
+	public Goal readPersonGoalByName(Long id, String title) {
+		System.out.println("Executing readPersonGoalByName()...");
+		Person person = Person.getPersonById(id.intValue());
+		Goal goal = Goal.getPersonGoalByName(person, title);
+		
+		System.out.println("\tReturning the \"" + title + "\" goal " +
+				"of the person with ID " + id + "...");
+		return goal;
+	}
+	
+	/***
 	 * An accessory method used to reset the database before the client start executing.
 	 */
 	@Override

@@ -197,6 +197,43 @@ public interface People {
 	);
 	
 	/***
+	 * A method that lists all the goals for a particular person in the database.
+	 * @param id: the identifier of the person
+	 * @return all the goals for a particular person in the database
+	 */
+	@WebMethod(operationName="readPersonGoalList")
+	@WebResult(name="goal")
+	public List<Goal> readPersonGoalList(
+			@WebParam(name="id") Long id
+	);
+	
+	/***
+	 * A method that gives all the information of a goal identified by {id} for a particular person.
+	 * @param id: the identifier of the person
+	 * @param gId: the identifier of the goal
+	 * @return the goal identified by {id} for a particular person
+	 */
+	@WebMethod(operationName="readPersonGoalById")
+	@WebResult(name="goal")
+	public Goal readPersonGoalById(
+			@WebParam(name="id") Long id,
+			@WebParam(name="gId") Long gId
+	);
+	
+	/***
+	 * A method that gives all the information of a goal identified by {title} for a particular person.
+	 * @param id: the identifier of the person
+	 * @param title: the title of the goal
+	 * @return the goal identified by {title} for a particular person
+	 */
+	@WebMethod(operationName="readPersonGoalByName")
+	@WebResult(name="goal")
+	public Goal readPersonGoalByName(
+			@WebParam(name="id") Long id,
+			@WebParam(name="title") String title
+	);
+	
+	/***
 	 * An accessory method used to reset the database before the client start executing.
 	 */
 	@WebMethod
