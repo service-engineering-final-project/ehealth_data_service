@@ -28,7 +28,7 @@ import introsde.health.soap.model.MeasurementHistory;
 @XmlRootElement			// make it the root element
 
 // The content order in the generated schema type
-@XmlType(propOrder={"id","firstname","lastname","birthdate","healthProfile"})
+@XmlType(propOrder={"id","firstname","lastname","birthdate","healthProfile","goals"})
 
 // A statically defined query with a predefined unchangeable query string
 @NamedQuery(name="Person.findAll", query="SELECT p FROM Person p")
@@ -66,6 +66,11 @@ public class Person implements Serializable {
 	// (mappedBy = name of the attribute in MeasurementHistory that maps this relation)
 	@OneToMany(mappedBy="person", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     private List<MeasurementHistory> mHistory;
+	
+	// Person contains one or more Goal
+	// (mappedBy = name of the attribute in Goal that maps this relation)
+	@OneToMany(mappedBy="person", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Goal> goal;
 	
 	/**
 	 * The empty constructor of the class.
@@ -177,6 +182,24 @@ public class Person implements Serializable {
 	public void setMeasurementHistory(List<MeasurementHistory> mHistory) {
         this.mHistory = mHistory;
     }
+	
+	/**
+	 * A method that returns the list of goals of the person.
+	 * @return goal: the list of goals of the person
+	 */
+	@XmlElementWrapper(name="goals")			// the node in which the List<Goal> elements will be inserted
+	@XmlElement(name="goal")					// customize the XML element name
+	public List<Goal> getGoals() {
+		return this.goal;
+	}
+	
+	/**
+	 * A method that sets the list of goals of the person.
+	 * @param goal: the list of goals of the person
+	 */
+	public void setGoals(List<Goal> goal) {
+		this.goal = goal;
+	}
 
 	
 	/********************************************************************************
