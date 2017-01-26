@@ -421,7 +421,7 @@ public class Goal implements Serializable {
 		Goal g = new Goal();
 		
 		try {
-			g = em.createNamedQuery("Goal.findPersonGoalByName", Goal.class)
+			g = em.createNamedQuery("Goal.findPersonGoalByNameAndStatus", Goal.class)
 					.setParameter("person", p).setParameter("title", gName)
 					.setParameter("achieved", achieved).getSingleResult();
 		} catch (Exception e) {
