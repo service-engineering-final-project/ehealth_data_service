@@ -19,7 +19,7 @@ public class PeoplePublisher {
 	public static void main(String[] args) throws IllegalArgumentException, IOException, URISyntaxException {
 		String PROTOCOL = "http://";
 		String HOSTNAME = InetAddress.getLocalHost().getHostAddress();
-		String PORT = "6902";
+		String PORT = "5720";
 		String BASE_URL = "/ws/people";
 		
 		if (HOSTNAME.equals("127.0.0.1")) {
