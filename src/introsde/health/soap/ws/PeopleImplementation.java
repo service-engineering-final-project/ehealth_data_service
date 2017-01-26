@@ -316,6 +316,43 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
+	 * A method that gives all the information of goals identified by {status} 
+	 * for a particular person with {id}.
+	 * @param id: the identifier of the person
+	 * @param status: the status of the goal
+	 * @return a list of goals identified by {status} for a particular person
+	 */
+	@Override
+	public List<Goal> readPersonGoalByStatus(Long id, String status) {
+		System.out.println("Executing readPersonGoalByStatus()...");
+		Person person = Person.getPersonById(id.intValue());
+		List<Goal> goals = Goal.getPersonGoalByStatus(person, status);
+		
+		System.out.println("\tReturning the \"" + status + "\" goals " +
+				"of the person with ID " + id + "...");
+		return goals;
+	}
+	
+	/***
+	 * A method that gives all the information of the goal identified by {title} 
+	 * and {status} for a particular person with {id}.
+	 * @param id: the identifier of the person
+	 * @param title: the title of the goal
+	 * @param status: the status of the goal
+	 * @return the goal identified by {status} for a particular person
+	 */
+	@Override
+	public Goal readPersonGoalByNameAndStatus(Long id, String title, String status) {
+		System.out.println("Executing readPersonGoalByNameAndStatus()...");
+		Person person = Person.getPersonById(id.intValue());
+		Goal goal = Goal.getPersonGoalByNameAndStatus(person, title, status);
+		
+		System.out.println("\tReturning the \"" + title + "\" goal (achieved: " + status + ") " +
+				"of the person with ID " + id + "...");
+		return goal;
+	}
+	
+	/***
 	 * An accessory method used to reset the database and that populates it with sample data.
 	 */
 	@Override

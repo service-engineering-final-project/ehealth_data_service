@@ -240,6 +240,36 @@ public interface People {
 	);
 	
 	/***
+	 * A method that gives all the information of goals identified by {status} 
+	 * for a particular person with {id}.
+	 * @param id: the identifier of the person
+	 * @param status: the status of the goal
+	 * @return a list of goals identified by {status} for a particular person
+	 */
+	@WebMethod(operationName="readPersonGoalByStatus")
+	@WebResult(name="goals")
+	public List<Goal> readPersonGoalByStatus(
+			@WebParam(name="id") Long id,
+			@WebParam(name="status") String status
+	);
+	
+	/***
+	 * A method that gives all the information of the goal identified by {title} 
+	 * and {status} for a particular person with {id}.
+	 * @param id: the identifier of the person
+	 * @param title: the title of the goal
+	 * @param status: the status of the goal
+	 * @return the goal identified by {title} and {status} for a particular person
+	 */
+	@WebMethod(operationName="readPersonGoalByNameAndStatus")
+	@WebResult(name="goal")
+	public Goal readPersonGoalByNameAndStatus(
+			@WebParam(name="id") Long id,
+			@WebParam(name="title") String title,
+			@WebParam(name="status") String status
+	);
+	
+	/***
 	 * An accessory method used to reset the database and that populates it with sample data.
 	 */
 	@WebMethod

@@ -1,7 +1,7 @@
 package introsde.health.soap.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -34,6 +34,10 @@ import introsde.health.soap.model.Person;
 		query="SELECT g FROM Goal g WHERE g.person = :person"),
 	@NamedQuery(name="Goal.findPersonGoalByName",
 		query="SELECT g FROM Goal g WHERE g.title = :title AND g.person = :person"),
+	@NamedQuery(name="Goal.findPersonGoalByStatus",
+		query="SELECT g FROM Goal g WHERE g.achieved = :achieved AND g.person = :person"),
+	@NamedQuery(name="Goal.findPersonGoalByNameAndStatus",
+		query="SELECT g FROM Goal g WHERE g.title = :title AND g.achieved = :achieved AND g.person = :person"),
 	@NamedQuery(name="Goal.findPersonGoalById",
 		query="SELECT g FROM Goal g WHERE g.id = :id AND g.person = :person")
 })
@@ -342,7 +346,7 @@ public class Goal implements Serializable {
 	/**
 	 * A method that allows to retrieve a goal given a goal name and a person.
 	 * @param p: the person
-	 * @param gName: the goal
+	 * @param gName: the goal name
 	 * @return g: the goal
 	 */
 	public static Goal getPersonGoalByName(Person p, String gName) {
@@ -374,6 +378,52 @@ public class Goal implements Serializable {
 		try {
 			g = em.createNamedQuery("Goal.findPersonGoalById", Goal.class)
 					.setParameter("person", p).setParameter("id", gId).getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+		
+		EHealthDao.instance.closeConnections(em);
+		
+		return g;
+	}
+	
+	/**
+	 * A method that allows to retrieve a goal given a goal name and a person.
+	 * @param p: the person
+	 * @param achieved: the status of the goal
+	 * @return g: the goal
+	 */
+	public static List<Goal> getPersonGoalByStatus(Person p, String achieved) {
+		EntityManager em = EHealthDao.instance.createEntityManager();
+		List<Goal> g = new ArrayList<Goal>();
+		
+		try {
+			g = em.createNamedQuery("Goal.findPersonGoalByStatus", Goal.class)
+					.setParameter("person", p).setParameter("achieved", achieved).getResultList();
+		} catch (Exception e) {
+			return null;
+		}
+		
+		EHealthDao.instance.closeConnections(em);
+		
+		return g;
+	}
+	
+	/**
+	 * A method that allows to retrieve a goal given a goal name, a status name and a person.
+	 * @param p: the person
+	 * @param gName: the goal name
+	 * @param achieved: the status of the goal
+	 * @return g: the goal
+	 */
+	public static Goal getPersonGoalByNameAndStatus(Person p, String gName, String achieved) {
+		EntityManager em = EHealthDao.instance.createEntityManager();
+		Goal g = new Goal();
+		
+		try {
+			g = em.createNamedQuery("Goal.findPersonGoalByName", Goal.class)
+					.setParameter("person", p).setParameter("title", gName)
+					.setParameter("achieved", achieved).getSingleResult();
 		} catch (Exception e) {
 			return null;
 		}
