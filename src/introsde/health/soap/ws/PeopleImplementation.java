@@ -265,7 +265,7 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
-	 * A method that lists all the goals for a particular person in the database.
+	 * A method that lists all the goals for a particular person with {id} in the database.
 	 * @param id: the identifier of the person
 	 * @return all the goals for a particular person in the database
 	 */
@@ -280,10 +280,11 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
-	 * A method that gives all the information of a goal identified by {id} for a particular person.
+	 * A method that gives all the information of a goal identified by {gId}
+	 * for a particular person with {id}.
 	 * @param id: the identifier of the person
 	 * @param gId: the identifier of the goal
-	 * @return the goal identified by {id} for a particular person
+	 * @return the goal identified by {gId} for a particular person
 	 */
 	@Override
 	public Goal readPersonGoalById(Long id, Long gId) {
@@ -297,7 +298,8 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
-	 * A method that gives all the information of a goal identified by {title} for a particular person.
+	 * A method that gives all the information of a goal identified by {title} 
+	 * for a particular person with {id}.
 	 * @param id: the identifier of the person
 	 * @param title: the title of the goal
 	 * @return the goal identified by {title} for a particular person
