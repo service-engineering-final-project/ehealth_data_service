@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="sde-assignment-3" default="install" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="health-internal-service" default="install" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
 	<!-- Ivy properties, download, installation and configuration -->
 	<property name="ivy.install.version" value="2.4.0-rc1" />
 	<property name="ivy.jar.dir" value="${basedir}/ivy" />
@@ -59,6 +59,12 @@
 		<echo message="Clean has been called" />
 		<delete dir="${build.dir}" />
 		<echo message="${build.dir} has been deleted" />
+		<delete dir="${src.dir}/${xjc.package}" />
+		<echo message="${src.dir}/${xjc.package} has been deleted" />
+		<delete dir="${lib.dir}" />
+		<echo message="${lib.dir} has been deleted" />
+		<delete dir="${ivy.jar.dir}" />
+		<echo message="${ivy.jar.dir} has been deleted" />
 	</target>
 	
 	<!-- Compile the project -->
@@ -82,8 +88,8 @@
 	
 	<!-- Start the application -->
 	<target name="execute.server" depends="install">
-		<echo message="Server start introsde.assignment.soap.endpoint.PeoplePublisher in ${build.dir}" />
-		<java classname="introsde.assignment.soap.endpoint.PeoplePublisher" classpath="${build.dir}" fork="true">
+		<echo message="Executing the server Application..." />
+		<java classname="introsde.health.soap.endpoint.PeoplePublisher" classpath="${build.dir}" fork="true">
 			<arg value="$JAVA_OPTS  -cp" />
 			<classpath>
 				<path location="build" />

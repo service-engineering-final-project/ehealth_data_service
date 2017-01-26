@@ -240,7 +240,7 @@ public interface People {
 	);
 	
 	/***
-	 * An accessory method used to reset the database before the client start executing.
+	 * An accessory method used to reset the database and that populates it with sample data.
 	 */
 	@WebMethod
 	void initializeDatabase();

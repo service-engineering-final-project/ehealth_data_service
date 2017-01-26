@@ -316,7 +316,7 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
-	 * An accessory method used to reset the database before the client start executing.
+	 * An accessory method used to reset the database and that populates it with sample data.
 	 */
 	@Override
 	public void initializeDatabase() {
