@@ -165,24 +165,28 @@ public interface People {
 	);
 	
 	/***
-	 * A method that updates the information of a goal identified by {id}.
+	 * A method that updates the information of a goal for a particular person with a certain {id}.
+	 * @param id: the identifier of the person
 	 * @param g: the goal to update
 	 * @return the goal updated
 	 */
 	@WebMethod(operationName="updateGoal")
 	@WebResult(name="updatedGoal")
 	public Goal updateGoal(
+			@WebParam(name="id") Long id,
 			@WebParam(name="goal") Goal g
 	);
 	
 	/***
-	 * A method that creates a new goal and returns it with its assigned id.
+	 * A method that creates a new goal for a particular person with a certain {id}.
+	 * @param id: the identifier of the person
 	 * @param g: the goal to create
 	 * @return the goal created
 	 */
 	@WebMethod(operationName="createGoal")
 	@WebResult(name="createdGoal")
 	public Goal createGoal(
+			@WebParam(name="id") Long id,
 			@WebParam(name="goal") Goal g
 	);
 	

@@ -216,13 +216,15 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
-	 * A method that updates the information of a goal identified by {id}.
+	 * A method that updates the information of a goal for a particular person with a certain {id}.
+	 * @param id: the identifier of the person
 	 * @param g: the goal to update
 	 * @return the goal updated
 	 */
 	@Override
-	public Goal updateGoal(Goal g) {
+	public Goal updateGoal(Long id, Goal g) {
 		System.out.println("Executing updateGoal()...");
+		g.setPerson(Person.getPersonById(id.intValue()));
 		g.updateGoal(g);
 		
 		System.out.println("\tReturning the goal updated (ID: " + g.getId() + ")...");
@@ -230,13 +232,15 @@ public class PeopleImplementation implements People {
 	}
 	
 	/***
-	 * A method that creates a new goal and returns it with its assigned id.
+	 * A method that creates a new goal for a particular person with a certain {id}.
+	 * @param id: the identifier of the person
 	 * @param g: the goal to create
 	 * @return the goal created
 	 */
 	@Override
-	public Goal createGoal(Goal g) {
+	public Goal createGoal(Long id, Goal g) {
 		System.out.println("Executing createGoal()...");
+		g.setPerson(Person.getPersonById(id.intValue()));
 		Goal goal = Goal.saveGoal(g);
 		
 		System.out.println("\tReturning the goal created (ID: " + goal.getId() + ")...");

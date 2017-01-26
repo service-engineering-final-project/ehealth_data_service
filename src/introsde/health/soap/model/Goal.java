@@ -118,7 +118,7 @@ public class Goal implements Serializable {
 	 * A method that sets the title.
 	 * @param title: the title
 	 */
-	public void setMeasureTitle(String title) {
+	public void setTitle(String title) {
 		this.title = title;
 	}
 
@@ -297,9 +297,15 @@ public class Goal implements Serializable {
 		
 		EntityManager em = EHealthDao.instance.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		g=em.merge(this);
-		tx.commit();
+		
+		if (em.find(Goal.class, (int)id) != null) {		// if the goal exists, update it
+			tx.begin();
+			g=em.merge(this);
+			tx.commit();
+		} else {
+			g = null;
+		}
+		
 		EHealthDao.instance.closeConnections(em);
 		
 		return g;
