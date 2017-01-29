@@ -4,12 +4,12 @@ The **health internal service** is the service that interacts with the internal 
 
 | resource | link |
 |----------|------|
-| API documentation | http://example.com |
-| Heroku base URL | http://example.com |
-| WSDL file | http://example.com |
+| API documentation | http://docs.healthinternalservice.apiary.io/ |
+| Heroku base URL | https://health-internal-service-ar.herokuapp.com/ws/ |
+| WSDL file | https://health-internal-service-ar.herokuapp.com/ws/people?wsdl |
 
 ### How to run it
-Since the server is already deployed on Heroku, it is only needed to go to the Heroku base URL (http://example.com). However, you can also deploy again the server on Heroku via git.
+Since the server is already deployed on Heroku, it is only needed to make SOAP requests checking the WSDL file. However, you can also deploy again the server on Heroku via git.
 
 **Optional**: If you want to try the server locally, you can follow the steps below:
 * **Clone** the repo: `git clone https://github.com/service-engineering-final-project/health_internal_service.git`;
