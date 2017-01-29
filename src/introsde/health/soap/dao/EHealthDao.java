@@ -278,14 +278,14 @@ public enum EHealthDao {
 		insertMeasurementHistory(em, 134, 3, "lipids", "160", "Mon Jan 30 22:34:24 CET 2017", "g");
 		insertMeasurementHistory(em, 135, 3, "sodium", "3.1", "Mon Jan 30 22:34:24 CET 2017", "g");
 		
-		insertGoal(em, 1, 1, "weight", "81", "73.5", "Wed Jan 18 22:34:24 CET 2017", "Sun Dec 31 22:34:24 CET 2017", "NO");
-		insertGoal(em, 2, 1, "steps", "0", "9000", "Wed Jan 18 22:34:24 CET 2017", "Sun Dec 31 22:34:24 CET 2017", "NO");
-		insertGoal(em, 3, 1, "bloodpressure", "141", "119", "Thu Jan 26 22:34:24 CET 2017", "Thu Feb 02 22:34:24 CET 2017", "NO");
-		insertGoal(em, 4, 1, "sleep_hours", "0", "9", "Tue Jan 31 22:34:24 CET 2017", "Wed Feb 01 22:34:24 CET 2017", "NO");
-		insertGoal(em, 5, 1, "carbohydrates", "0", "406", "Tue Jan 31 22:34:24 CET 2017", "Wed Feb 01 22:34:24 CET 2017", "NO");
-		insertGoal(em, 6, 1, "proteins", "0", "169", "Tue Jan 31 22:34:24 CET 2017", "Wed Feb 01 22:34:24 CET 2017", "NO");
-		insertGoal(em, 7, 1, "lipids", "0", "102", "Tue Jan 31 22:34:24 CET 2017", "Wed Feb 01 22:34:24 CET 2017", "NO");
-		insertGoal(em, 8, 1, "sodium", "0", "2.0", "Tue Jan 31 22:34:24 CET 2017", "Wed Feb 01 22:34:24 CET 2017", "NO");
+		insertGoal(em, 1, 1, "weight", "81", "73.5", "Sun Dec 31 22:34:24 CET 2017", "Wed Jan 18 22:34:24 CET 2017", "NO");
+		insertGoal(em, 2, 1, "steps", "0", "9000", "Sun Dec 31 22:34:24 CET 2017", "Wed Jan 18 22:34:24 CET 2017", "NO");
+		insertGoal(em, 3, 1, "bloodpressure", "141", "119", "Thu Feb 02 22:34:24 CET 2017", "Thu Jan 26 22:34:24 CET 2017", "NO");
+		insertGoal(em, 4, 1, "sleep_hours", "0", "9", "Wed Feb 01 22:34:24 CET 2017", "Tue Jan 31 22:34:24 CET 2017", "NO");
+		insertGoal(em, 5, 1, "carbohydrates", "0", "406", "Wed Feb 01 22:34:24 CET 2017", "Tue Jan 31 22:34:24 CET 2017", "NO");
+		insertGoal(em, 6, 1, "proteins", "0", "169", "Wed Feb 01 22:34:24 CET 2017", "Tue Jan 31 22:34:24 CET 2017", "NO");
+		insertGoal(em, 7, 1, "lipids", "0", "102", "Wed Feb 01 22:34:24 CET 2017", "Tue Jan 31 22:34:24 CET 2017", "NO");
+		insertGoal(em, 8, 1, "sodium", "0", "2.0", "Wed Feb 01 22:34:24 CET 2017", "Tue Jan 31 22:34:24 CET 2017", "NO");
 		
 		System.out.println("INSERT queries were executed!\n");
 		
